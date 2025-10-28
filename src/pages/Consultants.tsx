@@ -1,9 +1,14 @@
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { motion, AnimatePresence } from "framer-motion";
+import SpecialtyFilter from "@/components/ui/specialty-filter";
 
 const Consultants = () => {
+  const [selectedSpecialty, setSelectedSpecialty] = useState("all");
+  
   const consultants = [
     {
       name: "Dr. Nuwan Fernando",
@@ -91,22 +96,45 @@ const Consultants = () => {
                 </p>
               </div>
 
+              <SpecialtyFilter
+                specialties={[...new Set(consultants.map(c => c.specialization))]}
+                selectedSpecialty={selectedSpecialty}
+                onChange={setSelectedSpecialty}
+              />
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {consultants.map((consultant, index) => (
-                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow group">
-                    <img
-                      src={consultant.image}
-                      alt={`${consultant.name} - ${consultant.specialization} at Horizon Hospital`}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <CardContent className="p-6 text-center">
-                      <h3 className="text-xl font-bold mb-2 text-foreground">{consultant.name}</h3>
-                      <p className="text-primary font-semibold mb-3">{consultant.specialization}</p>
-                      <p className="text-sm text-muted-foreground">{consultant.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
+                <AnimatePresence mode="wait">
+                  {consultants
+                    .filter(consultant => 
+                      selectedSpecialty === "all" || 
+                      consultant.specialization.toLowerCase() === selectedSpecialty
+                    )
+                    .map((consultant, index) => (
+                    <motion.div
+                      key={consultant.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                      layout
+                    >
+                      <Card className="overflow-hidden hover:shadow-xl transition-shadow group">
+                        <motion.img
+                          src={consultant.image}
+                          alt={`${consultant.name} - ${consultant.specialization} at Horizon Hospital`}
+                          className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                          layoutId={`image-${consultant.name}`}
+                        />
+                        <CardContent className="p-6 text-center">
+                          <h3 className="text-xl font-bold mb-2 text-foreground">{consultant.name}</h3>
+                          <p className="text-primary font-semibold mb-3">{consultant.specialization}</p>
+                          <p className="text-sm text-muted-foreground">{consultant.description}</p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           </section>
