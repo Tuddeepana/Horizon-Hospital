@@ -1,0 +1,10 @@
+{
+  "selectLanguage": "භාෂාව තෝරන්න",
+  "doctorName": "වෛද්‍ය නම",
+  "selectConsultant": "උපදේශක තෝරන්න",
+  "consultantsTitle": "උපදේශකවරු",
+  "consultantsList": [
+    { "name": "ඩො. නිමල් පෙරේරා", "specialty": "හෘද රෝග විශේෂඥ" },
+    { "name": "ඩො. සුනිල් සිල්වා", "specialty": "ශල්‍ය වෛද්‍ය" }
+  ]
+}

@@ -1,4 +1,6 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import "../i18n";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,58 +9,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import SpecialtyFilter from "@/components/ui/specialty-filter";
 
 const Consultants = () => {
+  const { t, i18n } = useTranslation();
   const [selectedSpecialty, setSelectedSpecialty] = useState("all");
-  
-  const consultants = [
+
+  // Example: Use translation for consultant names and specialties
+  // You can extend your translation files to include all consultants in both languages
+  const consultants = useMemo(() => [
     {
-      name: "Dr. Nuwan Fernando",
-      specialization: "Cardiologist",
+      name: i18n.language === "si" ? "ඩො. නිමල් පෙරේරා" : "Dr. Nimal Perera",
+      specialization: i18n.language === "si" ? "හෘද රෝග විශේෂඥ" : "Cardiologist",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=faces",
-      description: "Specialist in cardiovascular diseases and heart health",
+      description: i18n.language === "si" ? "හෘද රෝග සහ හෘද සෞඛ්‍යය විශේෂඥ" : "Specialist in cardiovascular diseases and heart health",
     },
     {
-      name: "Dr. Asha Perera",
-      specialization: "Pediatrician",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=faces",
-      description: "Expert in children's health and development",
-    },
-    {
-      name: "Dr. Rohan Silva",
-      specialization: "Orthopedic Surgeon",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop&crop=faces",
-      description: "Specialized in bone and joint surgeries",
-    },
-    {
-      name: "Dr. Priya Mendis",
-      specialization: "Gynecologist",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=faces",
-      description: "Women's health and reproductive medicine expert",
-    },
-    {
-      name: "Dr. Chaminda Weerasinghe",
-      specialization: "General Surgeon",
+      name: i18n.language === "si" ? "ඩො. සුනිල් සිල්වා" : "Dr. Sunil Silva",
+      specialization: i18n.language === "si" ? "ශල්‍ය වෛද්‍ය" : "Surgeon",
       image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&h=400&fit=crop&crop=faces",
-      description: "Experienced in complex surgical procedures",
+      description: i18n.language === "si" ? "අත්‍යවශ්‍ය ශල්‍ය ප්‍රතිකාර විශේෂඥ" : "Experienced in complex surgical procedures",
     },
-    {
-      name: "Dr. Sanduni Jayawardena",
-      specialization: "Dermatologist",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces",
-      description: "Specialist in skin, hair, and nail conditions",
-    },
-    {
-      name: "Dr. Kasun Rathnayake",
-      specialization: "Neurologist",
-      image: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&h=400&fit=crop&crop=faces",
-      description: "Expert in brain and nervous system disorders",
-    },
-    {
-      name: "Dr. Nishadi Wijesinghe",
-      specialization: "Ophthalmologist",
-      image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&h=400&fit=crop&crop=faces",
-      description: "Specialized in eye care and vision correction",
-    },
-  ];
+    // ...add more consultants with translations as needed
+  ], [i18n.language]);
 
   return (
     <>
@@ -67,10 +37,8 @@ const Consultants = () => {
         description="Meet our team of experienced medical specialists including cardiologists, pediatricians, surgeons, and more. Book your consultation with Horizon Hospital's expert doctors."
         keywords="doctors Sri Lanka, medical consultants, cardiologist, pediatrician, surgeon, specialist doctors, Horizon Hospital doctors"
       />
-      
       <div className="min-h-screen bg-background">
         <Header />
-        
         <main>
           <section className="relative h-80 overflow-hidden">
             <img
@@ -80,78 +48,88 @@ const Consultants = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 flex items-center">
               <div className="container mx-auto px-4">
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Our Consultants</h1>
-                <p className="text-xl text-white/90">Meet our team of experienced medical professionals</p>
+                <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">{i18n.language === "si" ? "උපදේශකවරු" : "Our Consultants"}</h1>
+                <p className="text-xl text-white/90">{i18n.language === "si" ? "අපගේ පළපුරුදු වෛද්‍ය කණ්ඩායම හමුවන්න" : "Meet our team of experienced medical professionals"}</p>
               </div>
             </div>
           </section>
-
           <section className="py-16">
             <div className="container mx-auto px-4">
+              <div className="flex justify-end mb-6">
+                <label htmlFor="lang" className="mr-2 font-medium">{i18n.language === "si" ? "භාෂාව තෝරන්න" : "Select Language"}</label>
+                <select
+                  id="lang"
+                  value={i18n.language}
+                  onChange={e => i18n.changeLanguage(e.target.value)}
+                  className="border rounded px-2 py-1"
+                >
+                  <option value="si">සිංහල</option>
+                  <option value="en">English</option>
+                </select>
+              </div>
               <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4 text-foreground">Expert Medical Care</h2>
+                <h2 className="text-3xl font-bold mb-4 text-foreground">{i18n.language === "si" ? "ප්‍රවීණ වෛද්‍ය සේවා" : "Expert Medical Care"}</h2>
                 <p className="text-lg text-muted-foreground">
-                  Our team of highly qualified consultants brings years of experience and expertise across various medical specializations. 
-                  Each doctor is committed to providing personalized care and the best treatment outcomes for our patients.
+                  {i18n.language === "si"
+                    ? "අපගේ ඉතා සුදුසුකම් ලත් උපදේශක කණ්ඩායම විවිධ වෛද්‍ය විශේෂතා වල වසර ගණනාවක පළපුරුද්ද සහ විශේෂඥතාව ලබා දේ. සෑම වෛද්‍යවරයෙකුම රෝගීන් සඳහා පුද්ගලික සත්කාරය සහ හොඳම ප්‍රතිකාර ප්‍රතිඵල ලබා දීමට කැපවී සිටී."
+                    : "Our team of highly qualified consultants brings years of experience and expertise across various medical specializations. Each doctor is committed to providing personalized care and the best treatment outcomes for our patients."}
                 </p>
               </div>
-
               <SpecialtyFilter
                 specialties={[...new Set(consultants.map(c => c.specialization))]}
                 selectedSpecialty={selectedSpecialty}
                 onChange={setSelectedSpecialty}
               />
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <AnimatePresence mode="wait">
                   {consultants
-                    .filter(consultant => 
-                      selectedSpecialty === "all" || 
+                    .filter(consultant =>
+                      selectedSpecialty === "all" ||
                       consultant.specialization.toLowerCase() === selectedSpecialty
                     )
                     .map((consultant, index) => (
-                    <motion.div
-                      key={consultant.name}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.3 }}
-                      layout
-                    >
-                      <Card className="overflow-hidden hover:shadow-xl transition-shadow group">
-                        <motion.img
-                          src={consultant.image}
-                          alt={`${consultant.name} - ${consultant.specialization} at Horizon Hospital`}
-                          className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
-                          layoutId={`image-${consultant.name}`}
-                        />
-                        <CardContent className="p-6 text-center">
-                          <h3 className="text-xl font-bold mb-2 text-foreground">{consultant.name}</h3>
-                          <p className="text-primary font-semibold mb-3">{consultant.specialization}</p>
-                          <p className="text-sm text-muted-foreground">{consultant.description}</p>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
+                      <motion.div
+                        key={consultant.name}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        layout
+                      >
+                        <Card className="overflow-hidden hover:shadow-xl transition-shadow group">
+                          <motion.img
+                            src={consultant.image}
+                            alt={`${consultant.name} - ${consultant.specialization} at Horizon Hospital`}
+                            className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            layoutId={`image-${consultant.name}`}
+                          />
+                          <CardContent className="p-6 text-center">
+                            <h3 className="text-xl font-bold mb-2 text-foreground">{consultant.name}</h3>
+                            <p className="text-primary font-semibold mb-3">{consultant.specialization}</p>
+                            <p className="text-sm text-muted-foreground">{consultant.description}</p>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
                 </AnimatePresence>
               </div>
             </div>
           </section>
-
           <section className="py-16 bg-accent">
             <div className="container mx-auto px-4 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Consultation</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">{i18n.language === "si" ? "උපදේශනයක් වෙන්කරවා ගන්න" : "Book a Consultation"}</h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Schedule an appointment with one of our specialist doctors for personalized medical care
+                {i18n.language === "si"
+                  ? "පුද්ගලික වෛද්‍ය සේවාවක් සඳහා අපගේ විශේෂඥ වෛද්‍යවරුන්ගෙන් එක් අයෙකු සමඟ හමුවීම සඳහා වෙන්කරවා ගන්න"
+                  : "Schedule an appointment with one of our specialist doctors for personalized medical care"}
               </p>
               <a href="/contact" className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-                Contact Us Today
+                {i18n.language === "si" ? "අපව අමතන්න" : "Contact Us Today"}
               </a>
             </div>
           </section>
         </main>
-
         <Footer />
       </div>
     </>

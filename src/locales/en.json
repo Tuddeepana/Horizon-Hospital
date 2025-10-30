@@ -1,0 +1,10 @@
+{
+  "selectLanguage": "Select Language",
+  "doctorName": "Doctor Name",
+  "selectConsultant": "Select Consultant",
+  "consultantsTitle": "Consultants",
+  "consultantsList": [
+    { "name": "Dr. Nimal Perera", "specialty": "Cardiologist" },
+    { "name": "Dr. Sunil Silva", "specialty": "Surgeon" }
+  ]
+}
