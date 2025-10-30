@@ -9,7 +9,7 @@ import SEO from "@/components/SEO";
 
 import opdD from "../../public/img/opdD.webp";
 import emergency from "../../public/img/emergency.webp"
-import lab from   "../../public/img/LabM.webp"
+
 
 
 const Home = () => {
@@ -19,15 +19,15 @@ const Home = () => {
     "name": "Horizon Hospital",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Medical Avenue",
-      "addressLocality": "Colombo",
-      "addressRegion": "Western Province",
-      "postalCode": "00700",
+      "streetAddress": "Debarawewa Thissamaharama",
+      "addressLocality": "Thissamaharama",
+      "addressRegion": "Southern Province",
+      "postalCode": "82600",
       "addressCountry": "LK"
     },
-    "telephone": "+94112345678",
+    "telephone": "+94 472 239 444",
     "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "$$"
+    "priceRange": "Rs Rs - Rs Rsrs",
   };
 
   const stats = [

@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Activity, Menu } from "lucide-react";
 import { useState } from "react";
+import logo from "../../public/img/logo-1.png";
 
 const Header = () => {
   const location = useLocation();
@@ -11,10 +12,10 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full bg-card border-b border-border shadow-sm">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
-          <Activity className="h-8 w-8" />
-          <span>Horizon Hospital</span>
-        </Link>
+       <Link to="/" className="flex items-center gap-2 font-bold text-xl text-primary hover:opacity-80 transition-opacity">
+  <img src={logo} alt="Horizon Hospital Logo" className="h-12 w-auto" />
+  <span className="sr-only">Horizon Hospital</span>
+</Link>
 
         {/* Desktop Nav */}
         <ul className="hidden md:flex items-center gap-8">
