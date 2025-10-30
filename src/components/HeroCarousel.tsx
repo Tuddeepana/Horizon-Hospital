@@ -2,19 +2,23 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 
+import Hero1 from "../../public/img/Lab.webp";
+import Hero2 from "../../public/img/AdvanceTec.webp";
+import Hero3 from "../../public/img/ExpirenceTe.webp";
+
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1920&h=600&fit=crop",
+    image: Hero1,
     title: "Your Health, Our Priority",
     subtitle: "Providing exceptional healthcare services with compassion and expertise",
   },
   {
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1920&h=600&fit=crop",
+    image: Hero2,
     title: "Advanced Medical Technology",
     subtitle: "State-of-the-art equipment for accurate diagnosis and effective treatment",
   },
   {
-    image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=1920&h=600&fit=crop",
+    image: Hero3,
     title: "Experienced Healthcare Professionals",
     subtitle: "Dedicated team of doctors and staff committed to your wellbeing",
   },

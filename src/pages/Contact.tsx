@@ -108,13 +108,13 @@ const Contact = () => {
                           title: "Phone",
                           content: (
                             <>
-                              <a href="tel:+94112345678" className="text-muted-foreground hover:text-primary transition-colors">
-                                +94 11 234 5678
+                              <a href="tel:+94 472 239 444" className="text-muted-foreground hover:text-primary transition-colors">
+                                0472 239 444
                               </a>
                               <br />
-                              <a href="tel:+94112345679" className="text-muted-foreground hover:text-primary transition-colors">
+                              {/* <a href="tel:+94112345679" className="text-muted-foreground hover:text-primary transition-colors">
                                 +94 11 234 5679 (Emergency)
-                              </a>
+                              </a> */}
                             </>
                           )
                         },
@@ -122,8 +122,8 @@ const Contact = () => {
                           icon: <Mail className="h-6 w-6 text-primary" />,
                           title: "Email",
                           content: (
-                            <a href="mailto:info@horizonhospital.lk" className="text-muted-foreground hover:text-primary transition-colors">
-                              info@horizonhospital.lk
+                            <a href="mailto:info@horizonhospital.com" className="text-muted-foreground hover:text-primary transition-colors">
+                              info@horizonhospital.com
                             </a>
                           )
                         },

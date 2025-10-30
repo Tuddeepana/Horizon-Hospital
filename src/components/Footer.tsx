@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,18 +10,18 @@ const Footer = () => {
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                <span>123 Medical Avenue, Colombo 07, Sri Lanka</span>
+                <span>Horizon Hospital Debarawewa, Thissamaharama</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-5 w-5 flex-shrink-0" />
-                <a href="tel:+94112345678" className="hover:text-primary transition-colors">
-                  +94 11 234 5678
+                <a href="tel:+9472239444" className="hover:text-primary transition-colors">
+                  0472 239 444
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-5 w-5 flex-shrink-0" />
-                <a href="mailto:info@horizonhospital.lk" className="hover:text-primary transition-colors">
-                  info@horizonhospital.lk
+                <a href="mailto:info@horizonhospital.com" className="hover:text-primary transition-colors">
+                  info@horizonhospital.com
                 </a>
               </div>
             </div>
@@ -65,24 +65,7 @@ const Footer = () => {
               >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
+             
               <a
                 href="https://instagram.com"
                 target="_blank"
@@ -92,12 +75,43 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="TikTok"
+              >
+                {/* TikTok icon is not in lucide-react, use a generic icon or SVG if needed */}
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M9.5 2v15.5a2.5 2.5 0 1 1-2.5-2.5h2V9.5h2V7.5h-2V2h-2v5.5h-2v2h2v8.5a4.5 4.5 0 1 0 4.5-4.5V2h-2z"/>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Horizon Hospital. All rights reserved.</p>
+          <p>
+    &copy; {new Date().getFullYear()} All Rights Reserved by Horizon Hospital | © Developed by{" "}
+    <a
+      href="https://wrenix.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary hover:underline"
+    >
+      Wrenix PVT LTD
+    </a>
+  </p>
         </div>
       </div>
     </footer>

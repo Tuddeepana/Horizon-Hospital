@@ -7,6 +7,11 @@ import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import SEO from "@/components/SEO";
 
+import opdD from "../../public/img/opdD.webp";
+import emergency from "../../public/img/emergency.webp"
+import lab from   "../../public/img/LabM.webp"
+
+
 const Home = () => {
   const hospitalSchema = {
     "@context": "https://schema.org",
@@ -37,7 +42,7 @@ const Home = () => {
       icon: Stethoscope,
       title: "OPD Doctor",
       description: "Comprehensive outpatient consultation with experienced physicians for all your healthcare needs.",
-      image: "https://images.unsplash.com/photo-1666214280577-46f21553aef4?w=400&h=300&fit=crop",
+      image: opdD,
     },
     {
       icon: HomeIcon,
@@ -49,7 +54,7 @@ const Home = () => {
       icon: AlertCircle,
       title: "Emergency Care",
       description: "24/7 emergency medical services with rapid response and advanced life support.",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=300&fit=crop",
+      image: emergency,
     },
     {
       icon: Pill,

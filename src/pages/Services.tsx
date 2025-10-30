@@ -4,13 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 
+import opdD from "../../public/img/opdD.webp";
+import emergency from "../../public/img/emergency.webp"
+import lab from   "../../public/img/LabM.webp"
+
 const Services = () => {
   const services = [
     {
       icon: Stethoscope,
       title: "OPD Consultation",
       description: "Our Outpatient Department provides comprehensive medical consultations with experienced specialists across multiple disciplines. Whether you need a routine check-up or specialized medical advice, our doctors are here to help diagnose and treat various health conditions with the latest medical protocols.",
-      image: "https://images.unsplash.com/photo-1666214280577-46f21553aef4?w=600&h=400&fit=crop",
+      image: opdD,
     },
     {
       icon: Home,
@@ -22,7 +26,7 @@ const Services = () => {
       icon: Microscope,
       title: "Laboratory Services",
       description: "Our state-of-the-art laboratory is equipped with advanced diagnostic equipment to perform a wide range of tests including blood work, imaging, pathology, and specialized diagnostic procedures. We ensure accurate results with quick turnaround times to facilitate timely treatment decisions.",
-      image: "https://images.unsplash.com/photo-1581093458791-9d42e4f9e0d8?w=600&h=400&fit=crop",
+      image: lab,
     },
     {
       icon: Pill,
@@ -34,7 +38,7 @@ const Services = () => {
       icon: Activity,
       title: "Emergency Ward",
       description: "Available 24/7, our emergency department is staffed with experienced emergency physicians and nurses ready to handle any medical crisis. Equipped with advanced life support systems and rapid diagnostic facilities, we provide immediate care for all emergency medical situations with a focus on patient stabilization and swift treatment.",
-      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&h=400&fit=crop",
+      image: emergency,
     },
   ];
 

@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { Activity } from "lucide-react";
+import { Activity, Menu } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -14,7 +16,8 @@ const Header = () => {
           <span>Horizon Hospital</span>
         </Link>
 
-        <ul className="flex items-center gap-8">
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex items-center gap-8">
           <li>
             <Link
               to="/"
@@ -56,7 +59,68 @@ const Header = () => {
             </Link>
           </li>
         </ul>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden p-2 rounded text-primary"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Open menu"
+        >
+          <Menu className="h-8 w-8" />
+        </button>
       </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-card border-b border-border shadow-sm">
+          <ul className="flex flex-col gap-4 px-4 py-4">
+            <li>
+              <Link
+                to="/"
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive("/") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/services"
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive("/services") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/consultants"
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive("/consultants") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Consultants
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive("/contact") ? "text-primary" : "text-foreground"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact Us
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
