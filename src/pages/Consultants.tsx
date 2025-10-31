@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "../i18n";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,6 +12,15 @@ import SpecialtyFilter from "@/components/ui/specialty-filter";
 const Consultants = () => {
   const { t, i18n } = useTranslation();
   const [selectedSpecialty, setSelectedSpecialty] = useState("all");
+  const [showForm, setShowForm] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [formData, setFormData] = useState({
+    patientName: "",
+    age: "",
+    weight: "",
+    height: "",
+    tel: ""
+  });
 
   // Example: Use translation for consultant names and specialties
   // You can extend your translation files to include all consultants in both languages
@@ -108,6 +118,15 @@ const Consultants = () => {
                             <h3 className="text-xl font-bold mb-2 text-foreground">{consultant.name}</h3>
                             <p className="text-primary font-semibold mb-3">{consultant.specialization}</p>
                             <p className="text-sm text-muted-foreground">{consultant.description}</p>
+                            <button
+                              className="mt-4 px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 font-semibold"
+                              onClick={() => {
+                                setSelectedDoctor(consultant);
+                                setShowForm(true);
+                              }}
+                            >
+                              {i18n.language === "si" ? "වෙන්කරවා ගන්න" : "Book Now"}
+                            </button>
                           </CardContent>
                         </Card>
                       </motion.div>
@@ -115,6 +134,96 @@ const Consultants = () => {
                 </AnimatePresence>
               </div>
             </div>
+            {/* Booking Form Modal */}
+            {showForm && (
+              <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+                <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative">
+                  <button
+                    className="absolute top-2 right-2 text-xl font-bold text-primary"
+                    onClick={() => setShowForm(false)}
+                  >×</button>
+                  <h2 className="text-2xl font-bold mb-4 text-primary text-center">{i18n.language === "si" ? "වෙන්කරවා ගැනීම" : "Book Consultation"}</h2>
+                  <form
+                    onSubmit={e => {
+                      e.preventDefault();
+                      const message =
+                        `${i18n.language === "si" ? "රෝගියාගේ නම" : "Patient Name"}: ${formData.patientName}\n` +
+                        `${i18n.language === "si" ? "වෛද්‍ය" : "Doctor"}: ${selectedDoctor?.name}\n` +
+                        `${i18n.language === "si" ? "වයස" : "Age"}: ${formData.age}\n` +
+                        `${i18n.language === "si" ? "බර" : "Weight"}: ${formData.weight}\n` +
+                        `${i18n.language === "si" ? "උස" : "Height"}: ${formData.height}\n` +
+                        `${i18n.language === "si" ? "දුරකථන අංකය" : "Tel No"}: ${formData.tel}`;
+                      const whatsappUrl = `https://wa.me/94707799444?text=${encodeURIComponent(message)}`;
+                      window.open(whatsappUrl, "_blank");
+                    }}
+                  >
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "රෝගියාගේ නම" : "Patient Name"}</label>
+                      <input
+                        type="text"
+                        className="w-full border rounded px-3 py-2"
+                        required
+                        value={formData.patientName}
+                        onChange={e => setFormData({ ...formData, patientName: e.target.value })}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "වෛද්‍ය" : "Doctor"}</label>
+                      <input
+                        type="text"
+                        className="w-full border rounded px-3 py-2 bg-gray-100"
+                        value={selectedDoctor?.name || ""}
+                        readOnly
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "වයස" : "Age"}</label>
+                      <input
+                        type="number"
+                        className="w-full border rounded px-3 py-2"
+                        required
+                        value={formData.age}
+                        onChange={e => setFormData({ ...formData, age: e.target.value })}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "බර" : "Weight"}</label>
+                      <input
+                        type="number"
+                        className="w-full border rounded px-3 py-2"
+                        value={formData.weight}
+                        onChange={e => setFormData({ ...formData, weight: e.target.value })}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "උස" : "Height"}</label>
+                      <input
+                        type="number"
+                        className="w-full border rounded px-3 py-2"
+                        value={formData.height}
+                        onChange={e => setFormData({ ...formData, height: e.target.value })}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label className="block mb-1 font-medium">{i18n.language === "si" ? "දුරකථන අංකය" : "Tel No"}</label>
+                      <input
+                        type="tel"
+                        className="w-full border rounded px-3 py-2"
+                        required
+                        value={formData.tel}
+                        onChange={e => setFormData({ ...formData, tel: e.target.value })}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full py-2 px-4 bg-primary text-primary-foreground rounded font-semibold hover:bg-primary/90"
+                    >
+                      {i18n.language === "si" ? "වට්ස්ඇප් හරහා යවන්න" : "Book Now & Send via WhatsApp"}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
           </section>
           <section className="py-16 bg-accent">
             <div className="container mx-auto px-4 text-center">

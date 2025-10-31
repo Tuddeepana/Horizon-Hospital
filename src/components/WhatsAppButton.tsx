@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsAppButton = () => {
-  const whatsappNumber = "+94123456789"; // Replace with your actual WhatsApp number
+  const whatsappNumber = "+94707799444"; 
 
   return (
     <motion.div
