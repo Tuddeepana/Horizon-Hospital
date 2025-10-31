@@ -68,8 +68,8 @@ const Contact = () => {
                 className="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 flex items-center"
               >
                 <div className="container mx-auto px-4">
-                  <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Contact Us</h1>
-                  <p className="text-xl text-white/90">We're here to help you 24/7</p>
+                  <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">Connect with Horizon Hospital</h1>
+                  <p className="text-xl text-white/90">Your health questions answered. Get in touch with our team in Tissamaharama today.</p>
                 </div>
               </motion.div>
             </motion.section>

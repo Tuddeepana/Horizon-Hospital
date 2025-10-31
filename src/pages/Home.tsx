@@ -40,26 +40,26 @@ const Home = () => {
   const services = [
     {
       icon: Stethoscope,
-      title: "OPD Doctor",
-      description: "Comprehensive outpatient consultation with experienced physicians for all your healthcare needs.",
+      title: "OPD Consultations",
+      description: "Comprehensive outpatient consultation with experienced physicians for all your routine and specialized healthcare needs.",
       image: opdD,
     },
     {
-      icon: HomeIcon,
-      title: "Home Visit",
-      description: "Professional medical care delivered to your doorstep with personalized attention.",
+      icon: Heart,
+      title: "Expert Specialist Consultations",
+      description: "Access leading medical specialists in various fields, offering expert diagnosis and personalized treatment plans.",
       image: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=400&h=300&fit=crop",
     },
     {
       icon: AlertCircle,
-      title: "Emergency Care",
-      description: "24/7 emergency medical services with rapid response and advanced life support.",
+      title: "24/7 Emergency & Trauma Unit (ETU)",
+      description: "Rapid response and advanced life support for critical conditions. Always ready for immediate care in Tissamaharama.",
       image: emergency,
     },
     {
       icon: Pill,
-      title: "Pharmacy",
-      description: "Fully stocked pharmacy with qualified pharmacists to dispense your medications.",
+      title: "Hospital Pharmacy",
+      description: "A fully stocked, qualified pharmacy ensuring you receive accurate and essential medications with professional guidance.",
       image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=300&fit=crop",
     },
   ];
@@ -95,25 +95,55 @@ const Home = () => {
         keywords="hospital Sri Lanka, healthcare services, emergency care, medical consultation, doctors, pharmacy, OPD, home visit"
         schema={hospitalSchema}
       />
-      
       <div className="min-h-screen bg-background">
         <Header />
-        
         <main>
+          {/* Hero Section with Carousel */}
           <HeroCarousel />
+          <section className="py-20 bg-gradient-to-r from-primary/80 to-secondary/80 text-white text-center">
+            <div className="relative container mx-auto px-4">
+              {/* ECG Watermark Animation */}
+              <svg
+                className="absolute left-0 top-0 w-full h-24 md:h-32 opacity-30 pointer-events-none z-0"
+                viewBox="0 0 1440 100"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ animation: 'ecgMove 4s linear infinite' }}
+              >
+                <path
+                  d="M0 50 L200 50 L220 20 L240 80 L260 50 L400 50 L420 30 L440 70 L460 50 L600 50 L620 10 L640 90 L660 50 L800 50 L820 40 L840 60 L860 50 L1000 50 L1020 20 L1040 80 L1060 50 L1200 50 L1220 30 L1240 70 L1260 50 L1440 50"
+                  stroke="#fff"
+                  strokeWidth="3"
+                  strokeLinejoin="round"
+                  strokeDasharray="12 8"
+                >
+                </path>
+              </svg>
+              <style>{`
+                @keyframes ecgMove {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-60px); }
+                }
+              `}</style>
+              <div className="relative z-10">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6">Tissamaharama's Trusted Healthcare Partner</h1>
+                <p className="text-2xl mb-4">Comprehensive Medical Services and Personalized Care for Your Family's Wellbeing.</p>
+                <div className="inline-block bg-white text-primary font-semibold px-6 py-3 rounded shadow-lg text-lg mt-4">
+                  Immediate Care: 24/7 Emergency & Trauma Unit (ETU)
+                </div>
+              </div>
+            </div>
+          </section>
 
+          {/* About Horizon Hospital Section */}
           <section className="py-16 bg-card">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">About Horizon Hospital</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  At Horizon Hospital, we are committed to providing exceptional healthcare services with a focus on patient comfort and well-being. 
-                  With over two decades of experience, our team of skilled medical professionals utilizes state-of-the-art technology to deliver 
-                  accurate diagnoses and effective treatments. We believe in creating a healing environment where every patient receives personalized 
-                  care and attention, ensuring the best possible health outcomes for our community.
+                  At Horizon Hospital in Tissamaharama, we are committed to providing exceptional, patient-centered healthcare. Our skilled team of medical professionals utilizes modern technology to deliver accurate diagnoses and effective treatments, from routine OPD consultations to advanced procedures like Endoscopy and Colonoscopy. We believe in creating a compassionate and healing environment where every patient receives personalized care and attention, ensuring the best possible health outcomes for our community. Your wellbeing is our singular focus.
                 </p>
               </div>
-
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {stats.map((stat, index) => (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -128,13 +158,13 @@ const Home = () => {
             </div>
           </section>
 
+          {/* Services Section */}
           <section className="py-16">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Our Services</h2>
-                <p className="text-lg text-muted-foreground">Comprehensive healthcare solutions for you and your family</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Our Comprehensive Medical Services</h2>
+                <p className="text-lg text-muted-foreground">Exceptional Healthcare Solutions in Tissamaharama for You and Your Family.</p>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {services.map((service, index) => (
                   <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow group">
@@ -152,7 +182,6 @@ const Home = () => {
                   </Card>
                 ))}
               </div>
-
               <div className="text-center">
                 <Button asChild size="lg" className="font-semibold">
                   <Link to="/services">View All Services</Link>
@@ -161,13 +190,13 @@ const Home = () => {
             </div>
           </section>
 
+          {/* ...existing code... */}
           <section className="py-16 bg-accent">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Why Choose Us</h2>
                 <p className="text-lg text-muted-foreground">Experience healthcare excellence with patient-centered services</p>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {features.map((feature, index) => (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -183,7 +212,6 @@ const Home = () => {
               </div>
             </div>
           </section>
-
           <section className="py-16 bg-primary text-primary-foreground">
             <div className="container mx-auto px-4 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Make Your Appointment Today</h2>
@@ -194,7 +222,6 @@ const Home = () => {
             </div>
           </section>
         </main>
-
         <Footer />
       </div>
     </>
